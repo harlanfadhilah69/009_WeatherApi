@@ -118,5 +118,47 @@
         </div>
     </div>
     
+    <script>
+
+        const WEATHER_API_KEY = "6d12a4598a0a4e219a140419250610"; 
+        
+        function fetchWeather() {
+            const kota = document.getElementById("lokasi-input").value.trim();
+            const errorDiv = $("#error-message");
+            const dataContainer = $("#tampilan");
+            
+            if (!kota) {
+                errorDiv.text("Harap masukkan nama kota atau lokasi.").fadeIn();
+                dataContainer.fadeOut();
+                return;
+            }
+
+            const urlapi = `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${kota}&aqi=no`;
+
+            errorDiv.fadeOut(); 
+            
+            $.ajax({
+                url: urlapi,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    console.log("Data diterima:", data);
+                },
+                error: function(xhr) {
+                    console.error("Kesalahan API:", xhr.responseJSON);
+                    let errMsg = "Terjadi kesalahan saat mengambil data.";
+                    if (xhr.responseJSON && xhr.responseJSON.error) {
+                        errMsg = `Error: ${xhr.responseJSON.error.message}`;
+                    }
+                    errorDiv.text(errMsg).fadeIn();
+                    dataContainer.fadeOut();
+                }
+            });
+        }
+        
+        $(document).ready(function() {
+            setTimeout(fetchWeather, 100); 
+        });
+    </script>
     </body>
 </html>
