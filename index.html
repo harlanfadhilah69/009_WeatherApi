@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencari Cuaca Sederhana</title>
+    <style>
+        /* CSS Dasar untuk Layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            border: 1px solid #ccc; 
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px); 
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pencari Cuaca</h1>
+
+        <input type="text" id="lokasi-input" placeholder="Masukkan Nama Kota/Lokasi" value="Jakarta">
+        
+        <button onclick="fetchWeather()">Tampilkan Cuaca</button>
+
+        <div id="error-message" class="error"></div>
+        <div id="tampilan" class="data-container">
+            </div>
+    </div>
+    
+    </body>
+</html>
