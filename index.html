@@ -68,7 +68,18 @@
         #lokasi-nama { text-align: center; font-size: 1.2em; margin-bottom: 10px; font-weight: bold; color: #000; }
         .not-available { font-style: italic; color: #999; font-size: 0.9em; }
     </style>
-<div id="tampilan" class="data-container">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pencari Cuaca</h1>
+
+        <input type="text" id="lokasi-input" placeholder="Masukkan Nama Kota/Lokasi" value="Jakarta">
+        
+        <button onclick="fetchWeather()">Tampilkan Cuaca</button>
+
+        <div id="error-message" class="error"></div>
+        <div id="tampilan" class="data-container">
             <div id="lokasi-nama"></div>
             
             <div id="main-info">
@@ -105,19 +116,6 @@
                 <span class="value" id="longitude">-</span>
             </div>
         </div>
-</head>
-<body>
-
-    <div class="container">
-        <h1>Pencari Cuaca</h1>
-
-        <input type="text" id="lokasi-input" placeholder="Masukkan Nama Kota/Lokasi" value="Jakarta">
-        
-        <button onclick="fetchWeather()">Tampilkan Cuaca</button>
-
-        <div id="error-message" class="error"></div>
-        <div id="tampilan" class="data-container">
-            </div>
     </div>
     
     </body>
