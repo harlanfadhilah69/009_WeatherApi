@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pencari Cuaca Sederhana</title>
     <style>
-        /* CSS Dasar untuk Layout */
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0; 
@@ -45,7 +45,66 @@
         button:hover {
             background-color: #45a049;
         }
+    .data-container {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            display: none;
+        }
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        .data-item:last-child {
+            border-bottom: none;
+        }
+        .label { font-weight: bold; color: #555; }
+        .value { color: #333; }
+        #main-info { display: flex; align-items: center; justify-content: center; flex-direction: column; margin-bottom: 15px; }
+        #current-temp { font-size: 3em; font-weight: bold; color: #333; margin-top: 5px; }
+        #weather-icon { width: 50px; height: 50px; }
+        .error { color: red; text-align: center; margin-top: 10px; padding: 5px; border: 1px solid red; display: none; }
+        #lokasi-nama { text-align: center; font-size: 1.2em; margin-bottom: 10px; font-weight: bold; color: #000; }
+        .not-available { font-style: italic; color: #999; font-size: 0.9em; }
     </style>
+<div id="tampilan" class="data-container">
+            <div id="lokasi-nama"></div>
+            
+            <div id="main-info">
+                <img id="weather-icon" src="" alt="Weather Icon"> 
+                <span id="current-temp">--°C</span>
+            </div>
+            
+            <div class="data-item">
+                <span class="label">Kondisi:</span>
+                <span class="value" id="kondisi">-</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Kelembapan (Humidity):</span>
+                <span class="value" id="kelembapan">-</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Negara:</span>
+                <span class="value" id="negara">-</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Provinsi/Region:</span>
+                <span class="value" id="provinsi">-</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Kecamatan:</span>
+                <span class="value" id="kecamatan">...</span>
+            </div>
+            <div class="data-item"> 
+                <span class="label">Latitude (Lintang):</span>
+                <span class="value" id="latitude">-</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Longitude (Bujur):</span>
+                <span class="value" id="longitude">-</span>
+            </div>
+        </div>
 </head>
 <body>
 
