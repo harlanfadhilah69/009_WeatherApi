@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pencari Cuaca Sederhana</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         
         body {
@@ -45,7 +46,7 @@
         button:hover {
             background-color: #45a049;
         }
-    .data-container {
+        .data-container {
             border-top: 1px solid #eee;
             padding-top: 15px;
             display: none;
@@ -59,14 +60,50 @@
         .data-item:last-child {
             border-bottom: none;
         }
-        .label { font-weight: bold; color: #555; }
-        .value { color: #333; }
-        #main-info { display: flex; align-items: center; justify-content: center; flex-direction: column; margin-bottom: 15px; }
-        #current-temp { font-size: 3em; font-weight: bold; color: #333; margin-top: 5px; }
-        #weather-icon { width: 50px; height: 50px; }
-        .error { color: red; text-align: center; margin-top: 10px; padding: 5px; border: 1px solid red; display: none; }
-        #lokasi-nama { text-align: center; font-size: 1.2em; margin-bottom: 10px; font-weight: bold; color: #000; }
-        .not-available { font-style: italic; color: #999; font-size: 0.9em; }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+        .value {
+            color: #333;
+        }
+        #main-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; 
+            margin-bottom: 15px;
+        }
+        #current-temp {
+            font-size: 3em;
+            font-weight: bold;
+            color: #333;
+            margin-top: 5px;
+        }
+        #weather-icon {
+            width: 50px; 
+            height: 50px;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid red;
+            display: none;
+        }
+        #lokasi-nama {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #000;
+        }
+         .not-available {
+            font-style: italic;
+            color: #999;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
@@ -79,6 +116,7 @@
         <button onclick="fetchWeather()">Tampilkan Cuaca</button>
 
         <div id="error-message" class="error"></div>
+
         <div id="tampilan" class="data-container">
             <div id="lokasi-nama"></div>
             
@@ -117,9 +155,9 @@
             </div>
         </div>
     </div>
-    
-    <script>
 
+    <script>
+        
         const WEATHER_API_KEY = "6d12a4598a0a4e219a140419250610"; 
         
         function fetchWeather() {
@@ -143,7 +181,7 @@
                 dataType: 'json',
                 success: function(data) {
                     console.log("Data diterima:", data);
-
+                    
                     const suhu = data.current.temp_c;
                     const kelembapan = data.current.humidity; 
                     const lokasiNama = data.location.name; 
@@ -173,7 +211,6 @@
 
                     dataContainer.fadeIn(300); 
                 },
-                
                 error: function(xhr) {
                     console.error("Kesalahan API:", xhr.responseJSON);
                     let errMsg = "Terjadi kesalahan saat mengambil data.";
@@ -189,6 +226,6 @@
         $(document).ready(function() {
             setTimeout(fetchWeather, 100); 
         });
-    </script>
-    </body>
+    </script> 
+</body>
 </html>
